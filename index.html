@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>मेरा AI Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <button class="btn primary" id="newChat">+ नई चैट</button>
+    <div class="chat-list" id="chatList"></div>
+    <button class="btn" id="openSettings">⚙ सेटिंग्स</button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="icon-btn menu" id="menuBtn" aria-label="मेन्यू">☰</button>
+      <h1 id="chatTitle">AI Assistant</h1>
+      <button class="icon-btn" id="clearBtn" title="यह चैट हटाएं">🗑</button>
+    </header>
+
+    <section class="messages" id="messages" aria-live="polite">
+      <div class="empty" id="empty">
+        <h2>नमस्ते! मैं आपका AI Assistant हूँ</h2>
+        <p>कुछ भी पूछिए — हिंदी या English में।</p>
+        <div class="suggest">
+          <button data-p="मुझे एक अच्छी कहानी का आइडिया दो">कहानी का आइडिया</button>
+          <button data-p="Python में एक calculator का code लिखो">Python code</button>
+          <button data-p="मेरे लिए एक ईमेल ड्राफ्ट करो">ईमेल ड्राफ्ट</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="composer">
+      <textarea id="input" rows="1" placeholder="यहाँ अपना संदेश लिखें…"></textarea>
+      <button class="icon-btn" id="micBtn" title="बोलकर लिखें">🎤</button>
+      <button class="btn primary send" id="sendBtn">भेजें</button>
+    </footer>
+  </main>
+</div>
+
+<dialog id="settings">
+  <form method="dialog" class="settings-box" id="settingsForm">
+    <h2>सेटिंग्स</h2>
+    <label>AI Provider
+      <select id="provider">
+        <option value="groq">Groq (مفت اور آسان)</option>
+        <option value="claude">Claude (Anthropic)</option>
+        <option value="gemini">Gemini (Google – फ्री key मिलती है)</option>
+      </select>
+    </label>
+    <label>API Key
+      <input type="password" id="apiKey" placeholder="अपनी API key यहाँ डालें" autocomplete="off">
+    </label>
+    <label>Model
+      <input type="text" id="model" placeholder="model का नाम">
+    </label>
+    <label>System Prompt (AI का स्वभाव)
+      <textarea id="system" rows="3"></textarea>
+    </label>
+    <p class="note">आपकी key सिर्फ आपके ब्राउज़र में सेव होती है, कहीं और नहीं जाती। Groq key: console.groq.com · Gemini key: aistudio.google.com · Claude key: console.anthropic.com</p>
+    <div class="row">
+      <button class="btn" value="cancel">बंद करें</button>
+      <button class="btn primary" id="saveSettings" value="default">सेव करें</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
